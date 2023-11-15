@@ -17,6 +17,7 @@ namespace crud
         {
             InitializeComponent();
         }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -24,53 +25,46 @@ namespace crud
             telaLogin.Show();
         }
 
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             MySqlConnection meuSql = new MySqlConnection("server=localhost;database=db_crud;uid=root;pwd=etec");
 
             try
             {
-                if (int.Parse(txtbIdade.Text) >= 100 && int.Parse(txtbIdade.Text) <= 18)
+                if (int.Parse(txtbEmail.Text) >= 100 && int.Parse(txtbEmail.Text) <= 18)
                 {
                     throw new OverflowException();
                 }
 
-                if (txtbIdade.Text == "" && txtbNome.Text == "") 
+                if (txtbEmail.Text == "" && txtbNome.Text == "")
                 {
                     throw new ArgumentNullException();
                 }
 
                 meuSql.Open();
 
-                MySqlCommand insert = new MySqlCommand($"INSERT INTO Aluno(nome, idade) VALUES ('{txtbNome.Text}', {txtbIdade.Text});", meuSql);
+                MySqlCommand insert = new MySqlCommand($"INSERT INTO tb_clientes(id_barbeiro, nome, email, telefone, senha_cliente) VALUES ({1}, '{txtbNome.Text}', '{txtbEmail.Text}', '{txtbTelefone.Text}', '{txtbSenha.Text}');", meuSql);
                 insert.ExecuteNonQuery();
                 MessageBox.Show("Dados inseridos com sucesso!");
-                
-                
             }
             catch (MySqlException)
             {
-                MessageBox.Show("Erro: O Nome não pode conter mais que 100 caracteres.\nA idade mínima é" +
-                    " 18 anos e a máxima é 100 anos.");
+                MessageBox.Show("Erro: algum dado é inválido.");
                 txtbNome.Text = "";
-                txtbIdade.Text = "";
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("A idade deve ser um número inteiro.");
-                txtbIdade.Text = "";
-            }
-            catch (OverflowException)
-            {
-                MessageBox.Show("Essa idade passa dos limites permitidos.");
-                txtbIdade.Text = "";
+                txtbEmail.Text = "";
+                txtbSenha.Text = "";
+                txtbTelefone.Text = "";
             }
             catch (ArgumentNullException)
             {
                 MessageBox.Show("Todos os campos são obrigatórios.");
             }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
+
         private void lblCloseApplication_MouseEnter(object sender, EventArgs e)
         {
             lblCloseApplication.BackColor = Color.Red;

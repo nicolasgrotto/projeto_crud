@@ -19,19 +19,18 @@ namespace crud
             lblClosePanel.BackColor = Color.Transparent;
         }
 
-
         private void CarregarBancoDeDados()
         {
-            MySqlConnection meuSql = new MySqlConnection("server=localhost;database=db_crud;uid=root;pwd=etec");
+            MySqlConnection meuSql = new MySqlConnection("server=localhost;database=db_barbearia;uid=root;pwd=etec");
 
             try
-            {             
+            {
                 meuSql.Open();
                 DataTable dt = new DataTable();
 
                 MySqlDataAdapter adapter = null;
 
-                string select = "select * from Aluno";
+                string select = "select id_cliente, nome, email, telefone, cortes, datahora from tb_clientes join tb_agendamento on tb_clientes.id_cliente = tb_agendamento.id_cliente";
                 using (MySqlCommand cmd = new MySqlCommand(select, meuSql))
                 {
                     adapter = new MySqlDataAdapter(cmd);
@@ -39,7 +38,6 @@ namespace crud
 
                     dgvAluno.DataSource = dt;
                 }
-                
             }
             catch (Exception)
             {
@@ -47,7 +45,7 @@ namespace crud
             }
             finally
             {
-                if(meuSql.State == ConnectionState.Open)
+                if (meuSql.State == ConnectionState.Open)
                 {
                     meuSql.Close();
                 }
@@ -57,13 +55,13 @@ namespace crud
 
         private void FiltrarBancoDeDados()
         {
-            MySqlConnection meuSql = new MySqlConnection("server=localhost;database=db_crud;uid=root;pwd=etec");
+            MySqlConnection meuSql = new MySqlConnection("server=localhost;database=db_barbearia;uid=root;pwd=etec");
 
             try
             {
                 meuSql.Open();
 
-                string select = "select * from Aluno ";
+                string select = "select id_cliente, nome, email, telefone, cortes, datahora from tb_clientes join tb_agendamento on tb_clientes.id_cliente = tb_agendamento.id_cliente ";
 
                 if (txtbNome.Text != "")
                 {
@@ -72,7 +70,7 @@ namespace crud
 
                 DataTable dt = new DataTable();
 
-                using(MySqlCommand command = new MySqlCommand(select, meuSql))
+                using (MySqlCommand command = new MySqlCommand(select, meuSql))
                 {
                     if (txtbNome.Text != "")
                     {
@@ -86,15 +84,14 @@ namespace crud
                 }
 
                 MessageBox.Show("Dados Filtrados.");
-
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
             finally
             {
-                if(meuSql.State == ConnectionState.Open)
+                if (meuSql.State == ConnectionState.Open)
                 {
                     meuSql.Close();
                 }
@@ -108,25 +105,24 @@ namespace crud
             pnlEditar.Visible = false;
         }
 
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            MySqlConnection conexaoSql = new MySqlConnection("server=localhost;database=db_crud;uid=root;pwd=etec");
+            MySqlConnection conexaoSql = new MySqlConnection("server=localhost;database=db_barbearia;uid=root;pwd=etec");
             try
-            {    
+            {
                 conexaoSql.Open();
-                MySqlCommand comandoEditar = new MySqlCommand($"UPDATE Aluno SET nome = '{txtbNome.Text}', idade = {txtbIdade.Text} Where id = {txtbId.Text};", conexaoSql);
+                MySqlCommand comandoEditar = new MySqlCommand($"UPDATE tb_clientes SET nome = '{txtbNome.Text}', email = {txtbEmail.Text} Where id = {txtbId.Text};", conexaoSql);
                 comandoEditar.ExecuteNonQuery();
 
-                txtbIdade.Enabled = false;
+                txtbEmail.Enabled = false;
                 txtbNome.Enabled = false;
 
                 txtbId.Text = "";
-                txtbIdade.Text = "";
+                txtbEmail.Text = "";
                 txtbNome.Text = "";
 
                 MessageBox.Show("Dados atualizados!");
-                pnlEditar.Visible = false;        
+                pnlEditar.Visible = false;
             }
             catch (Exception)
             {
@@ -141,19 +137,17 @@ namespace crud
                 conexaoSql.Dispose();
             }
             CarregarBancoDeDados();
-
         }
 
         private void dgvAluno_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtbIdade.Enabled = true;
+            txtbEmail.Enabled = true;
             txtbNome.Enabled = true;
             pnlEditar.Visible = true;
 
             txtbId.Text = dgvAluno.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtbNome.Text = dgvAluno.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtbIdade.Text = dgvAluno.Rows[e.RowIndex].Cells[2].Value.ToString();
-        
+            txtbEmail.Text = dgvAluno.Rows[e.RowIndex].Cells[2].Value.ToString();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -169,11 +163,11 @@ namespace crud
                     MySqlCommand comandoEditar = new MySqlCommand($"DELETE FROM Aluno WHERE id = {txtbId.Text};", conexaoSql);
                     comandoEditar.ExecuteNonQuery();
 
-                    txtbIdade.Enabled = false;
+                    txtbEmail.Enabled = false;
                     txtbNome.Enabled = false;
 
                     txtbId.Text = "";
-                    txtbIdade.Text = "";
+                    txtbEmail.Text = "";
                     txtbNome.Text = "";
 
                     MessageBox.Show("Dados apagados!");

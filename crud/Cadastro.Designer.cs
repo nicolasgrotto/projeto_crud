@@ -36,8 +36,12 @@ namespace crud
             this.lblCloseApplication = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtbNome = new System.Windows.Forms.TextBox();
-            this.txtbIdade = new System.Windows.Forms.TextBox();
+            this.txtbEmail = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtbTelefone = new System.Windows.Forms.TextBox();
+            this.txtbSenha = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +49,7 @@ namespace crud
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(251, 173);
+            this.label1.Location = new System.Drawing.Point(255, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 20);
             this.label1.TabIndex = 0;
@@ -55,11 +59,11 @@ namespace crud
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(252, 245);
+            this.label2.Location = new System.Drawing.Point(256, 201);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 20);
+            this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Idade:";
+            this.label2.Text = "email:";
             // 
             // label3
             // 
@@ -89,7 +93,7 @@ namespace crud
             // btnCadastrar
             // 
             this.btnCadastrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.Location = new System.Drawing.Point(357, 339);
+            this.btnCadastrar.Location = new System.Drawing.Point(356, 367);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(113, 40);
             this.btnCadastrar.TabIndex = 4;
@@ -99,17 +103,17 @@ namespace crud
             // 
             // txtbNome
             // 
-            this.txtbNome.Location = new System.Drawing.Point(325, 175);
+            this.txtbNome.Location = new System.Drawing.Point(329, 131);
             this.txtbNome.Name = "txtbNome";
             this.txtbNome.Size = new System.Drawing.Size(194, 20);
             this.txtbNome.TabIndex = 5;
             // 
-            // txtbIdade
+            // txtbEmail
             // 
-            this.txtbIdade.Location = new System.Drawing.Point(325, 245);
-            this.txtbIdade.Name = "txtbIdade";
-            this.txtbIdade.Size = new System.Drawing.Size(194, 20);
-            this.txtbIdade.TabIndex = 6;
+            this.txtbEmail.Location = new System.Drawing.Point(329, 201);
+            this.txtbEmail.Name = "txtbEmail";
+            this.txtbEmail.Size = new System.Drawing.Size(194, 20);
+            this.txtbEmail.TabIndex = 6;
             // 
             // pictureBox1
             // 
@@ -123,13 +127,51 @@ namespace crud
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(255, 262);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "telefone";
+            // 
+            // txtbTelefone
+            // 
+            this.txtbTelefone.Location = new System.Drawing.Point(329, 262);
+            this.txtbTelefone.Name = "txtbTelefone";
+            this.txtbTelefone.Size = new System.Drawing.Size(194, 20);
+            this.txtbTelefone.TabIndex = 9;
+            // 
+            // txtbSenha
+            // 
+            this.txtbSenha.Location = new System.Drawing.Point(329, 322);
+            this.txtbSenha.Name = "txtbSenha";
+            this.txtbSenha.Size = new System.Drawing.Size(194, 20);
+            this.txtbSenha.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(255, 322);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "senha";
+            // 
             // Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtbSenha);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtbTelefone);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtbIdade);
+            this.Controls.Add(this.txtbEmail);
             this.Controls.Add(this.txtbNome);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.lblCloseApplication);
@@ -153,7 +195,11 @@ namespace crud
         private System.Windows.Forms.Label lblCloseApplication;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtbNome;
-        private System.Windows.Forms.TextBox txtbIdade;
+        private System.Windows.Forms.TextBox txtbEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtbTelefone;
+        private System.Windows.Forms.TextBox txtbSenha;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -31,12 +31,10 @@ namespace crud
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
             this.dgvAluno = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelId = new System.Windows.Forms.Label();
             this.txtbNome = new System.Windows.Forms.TextBox();
             this.txtbId = new System.Windows.Forms.TextBox();
-            this.txtbIdade = new System.Windows.Forms.TextBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.pnlEditar = new System.Windows.Forms.Panel();
             this.btnFiltrar = new System.Windows.Forms.Button();
@@ -45,6 +43,8 @@ namespace crud
             this.btnTelaCadastrar = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsFIltrarBtn = new System.Windows.Forms.ToolStripButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtbEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAluno)).BeginInit();
             this.pnlEditar.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -59,16 +59,6 @@ namespace crud
             this.dgvAluno.Size = new System.Drawing.Size(569, 194);
             this.dgvAluno.TabIndex = 0;
             this.dgvAluno.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAluno_CellMouseDoubleClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(29, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "idade";
             // 
             // label2
             // 
@@ -110,16 +100,6 @@ namespace crud
             this.txtbId.Size = new System.Drawing.Size(286, 20);
             this.txtbId.TabIndex = 5;
             // 
-            // txtbIdade
-            // 
-            this.txtbIdade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtbIdade.Enabled = false;
-            this.txtbIdade.Location = new System.Drawing.Point(72, 53);
-            this.txtbIdade.Name = "txtbIdade";
-            this.txtbIdade.Size = new System.Drawing.Size(286, 20);
-            this.txtbIdade.TabIndex = 6;
-            // 
             // btnEditar
             // 
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,7 +120,7 @@ namespace crud
             this.pnlEditar.Controls.Add(this.label2);
             this.pnlEditar.Controls.Add(this.btnEditar);
             this.pnlEditar.Controls.Add(this.label1);
-            this.pnlEditar.Controls.Add(this.txtbIdade);
+            this.pnlEditar.Controls.Add(this.txtbEmail);
             this.pnlEditar.Controls.Add(this.labelId);
             this.pnlEditar.Controls.Add(this.txtbId);
             this.pnlEditar.Controls.Add(this.txtbNome);
@@ -218,6 +198,26 @@ namespace crud
             this.tsFIltrarBtn.Text = "Filtrar";
             this.tsFIltrarBtn.Click += new System.EventHandler(this.tsFIltrarBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(29, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "email";
+            // 
+            // txtbEmail
+            // 
+            this.txtbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtbEmail.Enabled = false;
+            this.txtbEmail.Location = new System.Drawing.Point(72, 53);
+            this.txtbEmail.Name = "txtbEmail";
+            this.txtbEmail.Size = new System.Drawing.Size(286, 20);
+            this.txtbEmail.TabIndex = 6;
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,12 +243,10 @@ namespace crud
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAluno;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox txtbNome;
         private System.Windows.Forms.TextBox txtbId;
-        private System.Windows.Forms.TextBox txtbIdade;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Panel pnlEditar;
         private System.Windows.Forms.Button btnDelete;
@@ -257,6 +255,8 @@ namespace crud
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsFIltrarBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtbEmail;
     }
 }
 
